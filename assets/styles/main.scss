@@ -1,0 +1,17 @@
+// global styles
+@import "variables";
+@import "base";
+
+
+
+[debug],
+[debug] > * {
+    border: 1px solid red;
+}
+
+// global styles
+.fit-parent {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
