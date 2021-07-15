@@ -8,6 +8,6 @@ module.exports = {
         "at-rule-no-unknown": null,
         "at-rule-empty-line-before": "never",
         "declaration-empty-line-before": "never",
-        "no-empty-source": "never",
+        "no-empty-source": null,
     },
 };

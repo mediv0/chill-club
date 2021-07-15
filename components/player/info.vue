@@ -1,0 +1,82 @@
+<template>
+    <div class="player_info">
+        <div class="player_info__icons">
+            <div class="player_info__icons__icon" @click="setActiveTooltip('volume')">
+                <volume />
+                <volume-tooltip :show="activeTooltip === 'volume' && showTooltip" @onClickOutside="onClickOutside" />
+            </div>
+            <div class="player_info__icons__icon" @click="setActiveTooltip('playlist')">
+                <list />
+                <playlist :show="activeTooltip === 'playlist' && showTooltip" @onClickOutside="onClickOutside" />
+            </div>
+        </div>
+        <div class="player_info__content">
+            <p>yaeow - Lost In Between</p>
+            <small>The bootleg boy</small>
+        </div>
+    </div>
+</template>
+
+<script>
+import volume from "@/assets/images/player/volume.svg?inline";
+import list from "@/assets/images/player/list.svg?inline";
+import volumeTooltip from "@/components/tooltips/volumeHandler.vue";
+import Playlist from '@/components/tooltips/playlist.vue';
+export default {
+    components: {
+        volume,
+        list,
+        volumeTooltip,
+        Playlist,
+    },
+    data() {
+        return {
+            showTooltip: false,
+            activeTooltip: null
+        };
+    },
+    methods: {
+        onClickOutside() {
+            this.showTooltip = false;
+        },
+        setActiveTooltip(tooltip) {
+            this.activeTooltip = tooltip;
+            this.showTooltip = true;
+        }
+    },
+};
+</script>
+
+<style lang="scss" scoped>
+.player_info {
+    margin-top: 34px;
+    &__icons {
+        margin-left: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        &__icon {
+            position: relative;
+            & > svg {
+                cursor: pointer;
+                transition: 300ms ease;
+                &:active {
+                    transform: scale(0.9);
+                }
+            }
+            & > svg:first-child {
+                margin-right: 21px;
+            }
+        }
+    }
+
+    &__content {
+        font-weight: 300;
+        margin-top: 16.5px;
+
+        & > small {
+            opacity: 0.7;
+        }
+    }
+}
+</style>
