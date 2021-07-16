@@ -1,32 +1,15 @@
 <template>
     <tooltip-box v-if="show" v-click-outside="onClickOutside" class="playlist_tooltip">
         <div class="playlist">
-            <div class="playlist__now">
+            <div v-if="currentlyPlaying" class="playlist__now">
                 <div class="playlist__now__content">
                     <h6>now playing:</h6>
-                    <p class="text-muted">sad songs to isolate to ✨ 24/7</p>
-                    <small>Biteki びてき</small>
+                    <p class="text-muted">{{ currentlyPlaying.title }}</p>
+                    <small>{{ currentlyPlaying.author }}</small>
                 </div>
                 <graph class="playlist__now__graph" />
             </div>
-            <ul class="playlist__list">
-                <li class="playlist__list__item">
-                    <p>sad songs to isolate to ✨ 24/7</p>
-                    <small>Biteki びてき</small>
-                </li>
-                <li class="playlist__list__item">
-                    <p>sad songs to isolate to ✨ 24/7</p>
-                    <small>Biteki びてき</small>
-                </li>
-                <li class="playlist__list__item">
-                    <p>sad songs to isolate to ✨ 24/7</p>
-                    <small>Biteki びてき</small>
-                </li>
-                <li class="playlist__list__item">
-                    <p>sad songs to isolate to ✨ 24/7</p>
-                    <small>Biteki びてき</small>
-                </li>
-            </ul>
+            <musicList @onMusicSelected="onClickOutside" />
         </div>
     </tooltip-box>
 </template>
@@ -35,6 +18,8 @@
 import tooltipBox from "@/components/tooltipBox.vue";
 import vClickOutside from "v-click-outside";
 import graph from "@/components/player/graph.vue";
+import musicList from "@/components/tooltips/playlist/list.vue";
+import currentlyPlaying from "@/shared/currentlyPlaying.js"
 export default {
     directives: {
         clickOutside: vClickOutside.directive,
@@ -42,11 +27,20 @@ export default {
     components: {
         tooltipBox,
         graph,
+        musicList,
     },
+    mixins: [currentlyPlaying],
     props: {
         show: {
             type: Boolean,
             default: false,
+        },
+    },
+    computed: {
+        getActivePlaylist() {
+            const activeCategory = this.$store.getters["player/category"];
+            const activePlaylist = this.$store.getters["player/playList"];
+            return activePlaylist.filter((playlist) => playlist.category === activeCategory);
         },
     },
     methods: {
@@ -66,35 +60,6 @@ export default {
     width: 350px;
     overflow: auto;
     padding: 0;
-    &::-webkit-scrollbar {
-        width: 14px;
-    }
-
-    &::-webkit-scrollbar-thumb {
-        border: 4px solid rgba(0, 0, 0, 0);
-        background-clip: padding-box;
-        border-radius: 9999px;
-        background-color: black;
-    }
-    &::-webkit-scrollbar-track {
-        background: white;
-        border-radius: 100px;
-    }
-    &::-webkit-scrollbar-thumb:hover {
-        background: white;
-    }
-}
-
-.playlist {
-    &__list {
-        padding: 20px 35px;
-        &__item {
-            cursor: pointer;
-        }
-        &__item:not(:last-child) {
-            padding-bottom: 15px;
-        }
-    }
 }
 
 .playlist__now {
@@ -106,6 +71,7 @@ export default {
     padding: 20px 35px;
 
     &__content {
+        max-width: 80%;
         & > h6 {
             font-size: 1.2rem;
             margin-bottom: 3px;
