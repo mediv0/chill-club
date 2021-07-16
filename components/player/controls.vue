@@ -1,8 +1,8 @@
 <template>
     <div class="controls">
         <next-icon class="controls__next controls__next--back" />
-        <div class="controls__play" @click="isPlaying = !isPlaying">
-            <play v-if="isPlaying" class="controls__play__icon controls__play__icon--play" />
+        <div class="controls__play" @click="playMusic">
+            <play v-if="!isPlaying" class="controls__play__icon controls__play__icon--play" />
             <pause v-else class="controls__play__icon controls__play__icon--pause" />
             <div class="controls__play__pulse" :class="{ play_pulse_animation: isPlaying }"></div>
         </div>
@@ -20,10 +20,36 @@ export default {
         play,
         pause,
     },
-    data() {
-        return {
-            isPlaying: false,
-        };
+    computed: {
+        isPlaying() {
+            return this.$store.getters["player/playing"];
+        }
+    },
+    methods: {
+        playMusic() {
+            this.$store.commit("player/SET_PLAYING", !this.isPlaying)
+
+            if (this.isPlaying) {
+                this.play();
+            } else {
+                this.pause();
+            }
+        },
+        play() {
+            if (!this.$store.getters["player/activeMusic"]) {
+                this.$store.commit("player/SET_IS_MUSIC_PLAYER_AUTHORIZED", true);
+                this.setDefaultMusic();
+            } else {
+                this.$emit("notify_resume");
+            }
+        },
+        pause() {
+            this.$emit("notify_stop");
+        },
+
+        setDefaultMusic() {
+            this.$store.dispatch("player/setDefaultActiveMusic");
+        },
     },
 };
 </script>
