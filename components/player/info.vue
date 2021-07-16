@@ -5,23 +5,24 @@
                 <volume />
                 <volume-tooltip :show="activeTooltip === 'volume' && showTooltip" @onClickOutside="onClickOutside" />
             </div>
-            <div class="player_info__icons__icon" @click="setActiveTooltip('playlist')">
-                <list />
+            <div class="player_info__icons__icon">
+                <list @click="setActiveTooltip('playlist')" />
                 <playlist :show="activeTooltip === 'playlist' && showTooltip" @onClickOutside="onClickOutside" />
             </div>
         </div>
         <div class="player_info__content">
-            <p>yaeow - Lost In Between</p>
-            <small>The bootleg boy</small>
+            <p>{{ currentlyPlaying ? currentlyPlaying.title : "..." }}</p>
+            <small>{{ currentlyPlaying ? currentlyPlaying.author : "..." }}</small>
         </div>
     </div>
 </template>
 
 <script>
-import volume from "@/assets/images/player/volume.svg?inline";
+import volume from "@/components/player/volumeAnimation.vue";
 import list from "@/assets/images/player/list.svg?inline";
 import volumeTooltip from "@/components/tooltips/volumeHandler.vue";
-import Playlist from '@/components/tooltips/playlist.vue';
+import Playlist from "@/components/tooltips/playlist.vue";
+import currentlyPlaying from "@/shared/currentlyPlaying.js";
 export default {
     components: {
         volume,
@@ -29,10 +30,11 @@ export default {
         volumeTooltip,
         Playlist,
     },
+    mixins: [currentlyPlaying],
     data() {
         return {
             showTooltip: false,
-            activeTooltip: null
+            activeTooltip: null,
         };
     },
     methods: {
@@ -42,7 +44,7 @@ export default {
         setActiveTooltip(tooltip) {
             this.activeTooltip = tooltip;
             this.showTooltip = true;
-        }
+        },
     },
 };
 </script>
