@@ -2,7 +2,7 @@
     <tooltip-box v-if="show" v-click-outside="onClickOutside" class="mood_tooltip">
         <p class="mood_tooltip__title">select mood</p>
         <ul class="mood_tooltip__list">
-            <li v-for="(mood, i) in moods" :key="i" class="mood_tooltip__list__item">
+            <li v-for="(mood, i) in moods" :key="i" class="mood_tooltip__list__item" :class="{ active_mood: activeMood === mood.title }" @click="selectMood(mood.title)">
                 <p>{{ mood.title }}</p>
             </li>
         </ul>
@@ -29,6 +29,7 @@ export default {
     data() {
         return {
             moods: null,
+            activeMood: null,
         };
     },
     created() {
@@ -37,6 +38,14 @@ export default {
     methods: {
         onClickOutside() {
             this.$emit("onHideTooltip");
+        },
+        selectMood(mood) {
+            if (!this.$store.getters["slider/isSliderChanging"]) {
+                this.activeMood = mood;
+                this.$store.commit("player/SET_CATEGORY", mood);
+                this.$store.dispatch("player/setDefaultActiveMusic");
+                this.onClickOutside();
+            }
         },
     },
 };
@@ -75,5 +84,9 @@ export default {
             margin-top: 5px;
         }
     }
+}
+
+.active_mood {
+    background: rgb(238, 237, 237);
 }
 </style>
