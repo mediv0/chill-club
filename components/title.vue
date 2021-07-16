@@ -1,11 +1,13 @@
 <template>
     <div class="title">
-        <p class="toggle_title" @click="showMoodTooltip = true">
-            Choose your mood
-            <play class="tooltip_toggle" :class="{ rotate_toggle_icon: showMoodTooltip }" />
+        <div class="title__mood">
+            <p class="toggle_title" @click="showMoodTooltip = true">
+                Choose your mood
+                <play class="tooltip_toggle" :class="{ rotate_toggle_icon: showMoodTooltip }" />
+            </p>
             <mood-tooltip :show="showMoodTooltip" @onHideTooltip="onHideTooltip" />
-        </p>
-        <h1>Nostaliga</h1>
+        </div>
+        <h1>{{ activeMoodTitle }}</h1>
     </div>
 </template>
 
@@ -21,6 +23,11 @@ export default {
         return {
             showMoodTooltip: false,
         };
+    },
+    computed: {
+        activeMoodTitle() {
+            return this.$store.getters["player/category"];
+        },
     },
     methods: {
         onHideTooltip() {
@@ -41,6 +48,12 @@ export default {
         margin-top: -15px;
         filter: drop-shadow(0 0 10px rgba($color: #000000, $alpha: 0.3));
     }
+
+    &__mood {
+        position: relative;
+        user-select: none;
+        display: inline-block;
+    }
 }
 
 .tooltip_toggle {
@@ -50,13 +63,9 @@ export default {
     margin-left: 5px;
     transition: 300ms ease;
 }
-
 p.toggle_title {
     font-size: 1.143rem;
     cursor: pointer;
-    position: relative;
-    user-select: none;
-    display: inline-block;
 }
 
 .rotate_toggle_icon {
