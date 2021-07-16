@@ -13,16 +13,28 @@ export default {
             images: {},
             active: null,
             new: null,
+            isSliderChanging: false,
         };
     },
+    computed: {
+        getActiveCategory() {
+            return this.$store.getters["player/category"];
+        },
+    },
+
+    watch: {
+        getActiveCategory(val) {
+            if (!this.$store.getters["slider/isSliderChanging"]) {
+                this.next(val);
+            }
+        },
+    },
+
     async mounted() {
         this.active = document.querySelector(".active");
         this.new = document.querySelector(".new");
         await this.cacheImages();
-        this.loadImage("Study & Chill", "active");
-        setTimeout(() => {
-            this.next();
-        }, 2000);
+        this.loadImage(this.getActiveCategory, "active");
     },
 
     methods: {
@@ -36,21 +48,24 @@ export default {
         loadImage(title, state) {
             this[state].src = this.images[title].src;
         },
-        next() {
-            this.loadImage("Nostalgia", "new");
+        next(image) {
+            this.$store.commit("slider/SET_SLIDER_CHANGING", true);
+            this.isSliderChanging = true;
+            this.loadImage(image, "new");
+            this.toggleSliderAnimation("add");
 
-            // run animations
-            this.active.classList.add("slider-out");
-            this.new.classList.add("slider-in");
-
-            // remove elements after animation
-            this.active.addEventListener("animationend", () => {
-                // this.active.removeAttribute("src");
-                 this.active.classList.remove("slider-out");
-                 this.new.classList.remove("slider-in");
-                // replace active element with new element and change class name to active
-                this.active.parentNode.replaceChild(this.new, this.active);
-            });
+            // for some reason animationEnd event not working here ( multiple calls )
+            // this hack should work for now
+            setTimeout(() => {
+                this.toggleSliderAnimation("remove");
+                this.active.src = this.new.src;
+                this.new.removeAttribute("src");
+                this.$store.commit("slider/SET_SLIDER_CHANGING", false);
+            }, 1350);
+        },
+        toggleSliderAnimation(state) {
+            this.active.classList[state]("slider-out");
+            this.new.classList[state]("slider-in");
         },
     },
 };
