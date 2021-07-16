@@ -14,7 +14,7 @@
     z-index: 99;
     width: 230px;
     height: auto;
-    max-height: 300px;
+    max-height: 360px;
     overflow: auto;
     background: white;
     border-radius: 12px;
