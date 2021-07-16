@@ -1,6 +1,6 @@
 <template>
     <tooltip-box v-if="show" v-click-outside="onClickOutside" class="volume_tooltip">
-        <input type="range" name="vol" min="0" max="50" style="cursor: pointer" />
+        <input v-model="volume" type="range" name="vol" min="0" max="100" style="cursor: pointer" />
     </tooltip-box>
 </template>
 
@@ -19,6 +19,16 @@ export default {
             type: Boolean,
             default: false,
         },
+    },
+    data() {
+        return {
+            volume: 70,
+        }
+    },
+    watch: {
+        volume(volume) {
+            this.$store.commit("player/SET_VOLUME", volume);
+        }
     },
     methods: {
         onClickOutside() {
