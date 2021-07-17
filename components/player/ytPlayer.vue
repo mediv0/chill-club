@@ -13,20 +13,13 @@ export default {
     computed: {
         volume() {
             return this.$store.getters["player/volume"];
-        }
+        },
     },
     watch: {
         volume(volume) {
             this.player.setVolume(volume);
-        }
+        },
     },
-    async mounted() {
-        await this.loadScript();
-        window.YT.ready(() => {
-            this.loadPlayer();
-        });
-    },
-
     methods: {
         loadScript() {
             return new Promise((resolve, reject) => {
@@ -40,19 +33,22 @@ export default {
             });
         },
 
-        loadPlayer() {
-            this.player = new YT.Player("ytPlayer", {
-                height: "0",
-                width: "0",
-                playerVars: { autoplay: 1, controls: 0 },
-                events: {
-                    onStateChange: this.onPlayerStateChange,
-                    onReady: this.onPlayerReady,
-                },
+        createYoutubePlayer() {
+            return new Promise((resolve, reject) => {
+                this.player = new YT.Player("ytPlayer", {
+                    height: "0",
+                    width: "0",
+                    playerVars: { autoplay: 1, controls: 0 },
+                    events: {
+                        onStateChange: this.onPlayerStateChange,
+                        onReady: resolve,
+                    },
+                });
             });
         },
         onPlayerReady() {
             this.player.setVolume(70);
+            this.player.loadVideoById("gnyW6uaUgk4");
         },
         onPlayerStateChange(e) {
             if (e.data === 1) {
@@ -63,7 +59,21 @@ export default {
             }
         },
         loadById(id) {
-            this.player.loadVideoById(id);
+            if (!this.player) {
+                this.fetchYTPlayer(id);
+            } else {
+                this.player.loadVideoById(id);
+            }
+        },
+        async fetchYTPlayer(id) {
+            await this.loadScript();
+            window.YT.ready(this.loadPlayer.bind(this, id));
+        },
+        loadPlayer(id) {
+            this.createYoutubePlayer().then(() => {
+                this.onPlayerReady();
+                this.loadById(id);
+            });
         },
         pause() {
             this.player.pauseVideo();
@@ -73,7 +83,7 @@ export default {
         },
         setVolume(volume) {
             this.player.setVolume(volume);
-        }
+        },
     },
 };
 </script>
