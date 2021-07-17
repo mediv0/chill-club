@@ -20,15 +20,13 @@
 <script>
 import volume from "@/components/player/volumeAnimation.vue";
 import list from "@/assets/images/player/list.svg?inline";
-import volumeTooltip from "@/components/tooltips/volumeHandler.vue";
-import Playlist from "@/components/tooltips/playlist.vue";
 import currentlyPlaying from "@/shared/currentlyPlaying.js";
 export default {
     components: {
         volume,
         list,
-        volumeTooltip,
-        Playlist,
+        volumeTooltip: () => import("@/components/tooltips/volumeHandler.vue"),
+        Playlist: () => import("@/components/tooltips/playlist.vue"),
     },
     mixins: [currentlyPlaying],
     data() {

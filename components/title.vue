@@ -13,11 +13,10 @@
 
 <script>
 import play from "@/assets/images/player/play.svg?inline";
-import moodTooltip from "@/components/tooltips/mood.vue";
 export default {
     components: {
         play,
-        moodTooltip,
+        moodTooltip: () => import("@/components/tooltips/mood.vue"),
     },
     data() {
         return {
