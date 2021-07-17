@@ -1,7 +1,7 @@
 <template>
     <div class="slider">
-        <img class="active" />
-        <img class="new" />
+        <img class="active" alt="active background image" />
+        <img class="new" alt="slider background image"/>
     </div>
 </template>
 

@@ -1,13 +1,21 @@
 export default {
     // Global page headers: https://go.nuxtjs.dev/config-head
 
-    target: "static",
     head: {
-        title: "chillClub",
+        title: "chill club - listen to music and chill",
         htmlAttrs: {
             lang: "en",
         },
-        meta: [{ charset: "utf-8" }, { name: "viewport", content: "width=device-width, initial-scale=1" }, { hid: "description", name: "description", content: "" }, { name: "format-detection", content: "telephone=no" }],
+        meta: [
+            { charset: "utf-8" },
+            { name: "viewport", content: "width=device-width, initial-scale=1" },
+            { name: "robots", content: "index, follow" },
+            {
+                hid: "description",
+                name: "description",
+                content: "select your mood and listen to songs that fit your mood",
+            },
+        ],
         link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }],
     },
 
@@ -29,7 +37,6 @@ export default {
         "@nuxtjs/style-resources",
         "@nuxtjs/svg",
     ],
-
     // Modules: https://go.nuxtjs.dev/config-modules
     modules: [
         [
@@ -63,5 +70,24 @@ export default {
     },
 
     // Build Configuration: https://go.nuxtjs.dev/config-build
-    build: {},
+    build: {
+        extractCSS: true,
+        minimize: true,
+        optimizeCSS: true,
+        html: {
+            minify: {
+                collapseBooleanAttributes: true,
+                decodeEntities: true,
+                minifyCSS: true,
+                minifyJS: true,
+                processConditionalComments: true,
+                removeEmptyAttributes: true,
+                removeRedundantAttributes: true,
+                trimCustomFragments: true,
+                useShortDoctype: true,
+                preserveLineBreaks: false,
+                collapseWhitespace: true,
+            },
+        },
+    },
 };
