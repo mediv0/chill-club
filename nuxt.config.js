@@ -42,6 +42,12 @@ export default {
     ],
     // Modules: https://go.nuxtjs.dev/config-modules
     modules: [
+        [
+            "@nuxtjs/google-analytics",
+            {
+                id: process.env.GOOGLE_ID,
+            },
+        ],
         "@nuxtjs/sitemap",
         [
             "nuxt-font-loader-strategy",
@@ -71,10 +77,6 @@ export default {
     sitemap: {
         hostname: "https://chill-club.vercel.app/",
         gzip: true,
-    },
-    googleAnalytics: {
-        // Options
-        id: process.env.GOOGLE_ID,
     },
 
     // module settings
