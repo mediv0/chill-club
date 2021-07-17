@@ -10,6 +10,8 @@ export const state = () => ({
     isMusicPlayerAuthorized: false,
     // player volume
     volume: 70,
+    // active music index
+    activeIndex: 0,
 });
 
 export const mutations = {
@@ -33,19 +35,24 @@ export const mutations = {
     },
     SET_VOLUME(state, volume) {
         state.volume = volume;
-    }
+    },
+    SET_ACTIVE_INDEX(state, activeIndex) {
+        state.activeIndex = activeIndex;
+    },
 };
 
 export const actions = {
-    setActiveMusic({ commit, getters }, music) {
+    setActiveMusic({ commit, getters }, { music, index }) {
         if (getters.isMusicPlayerAuthorized) {
             commit("SET_ACTIVE_MUSIC", music);
+            commit("SET_ACTIVE_INDEX", index);
         }
     },
     setDefaultActiveMusic({ commit, getters }) {
         if (getters.isMusicPlayerAuthorized) {
             const category = getters.category;
             const music = getters.playList.find((music) => music.category === category);
+            commit("SET_ACTIVE_INDEX", 0);
             commit("SET_ACTIVE_MUSIC", music);
         }
     },
@@ -59,4 +66,10 @@ export const getters = {
     isMusicPlayerAuthorized: (state) => state.isMusicPlayerAuthorized,
     activeMusic: (state) => state.activeMusic,
     volume: (state) => state.volume,
+    activeIndex: (state) => state.activeIndex,
+    activePlaylist: (getters) => {
+        const category = getters.category;
+        const playList = getters.playList;
+        return playList.filter((playlist) => playlist.category === category);
+    },
 };

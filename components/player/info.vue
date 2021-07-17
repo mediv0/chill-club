@@ -75,6 +75,8 @@ export default {
     &__content {
         font-weight: 300;
         margin-top: 16.5px;
+        pointer-events: none;
+        user-select: none;
 
         & > small {
             opacity: 0.7;

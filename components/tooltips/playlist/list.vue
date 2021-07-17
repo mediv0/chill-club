@@ -1,6 +1,6 @@
 <template>
     <ul v-if="getActivePlaylist.length > 0" class="playlist__list">
-        <li v-for="(cat, i) in getActivePlaylist" :key="i" class="playlist__list__item" @click="playMusic(cat)">
+        <li v-for="(cat, i) in getActivePlaylist" :key="i" class="playlist__list__item" @click="playMusic(cat, i)">
             <p>{{ cat.title }}</p>
             <small>{{ cat.author }}</small>
         </li>
@@ -14,18 +14,16 @@
 export default {
     computed: {
         getActivePlaylist() {
-            const activeCategory = this.$store.getters["player/category"];
-            const activePlaylist = this.$store.getters["player/playList"];
-            return activePlaylist.filter((playlist) => playlist.category === activeCategory);
+            return this.$store.getters["player/activePlaylist"];
         },
     },
     methods: {
-        playMusic(music) {
+        playMusic(music, index) {
             this.$store.commit("player/SET_IS_MUSIC_PLAYER_AUTHORIZED", true);
-            this.$store.dispatch("player/setActiveMusic", music);
+            this.$store.dispatch("player/setActiveMusic", { music, index });
             this.$emit("onMusicSelected");
-        }
-    }
+        },
+    },
 };
 </script>
 

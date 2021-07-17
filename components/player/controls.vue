@@ -1,12 +1,12 @@
 <template>
     <div class="controls">
-        <next-icon class="controls__next controls__next--back" />
+        <next-icon class="controls__next controls__next--back" @click="prev" />
         <div class="controls__play" @click="playMusic">
             <play v-if="!isPlaying" class="controls__play__icon controls__play__icon--play" />
             <pause v-else class="controls__play__icon controls__play__icon--pause" />
             <div class="controls__play__pulse" :class="{ play_pulse_animation: isPlaying }"></div>
         </div>
-        <next-icon class="controls__next controls__next--forward" />
+        <next-icon class="controls__next controls__next--forward" @click="next" />
     </div>
 </template>
 
@@ -50,6 +50,14 @@ export default {
         setDefaultMusic() {
             this.$store.dispatch("player/setDefaultActiveMusic");
         },
+
+        prev() {
+            this.$emit("play_prev_video");
+        },
+
+        next() {
+            this.$emit("play_next_video")
+        }
     },
 };
 </script>

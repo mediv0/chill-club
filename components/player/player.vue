@@ -2,7 +2,7 @@
     <div class="player">
         <ytPlayer ref="player" />
         <loading />
-        <controls @notify_stop="stop" @notify_resume="resume" />
+        <controls @notify_stop="stop" @notify_resume="resume" @play_prev_video="prev" @play_next_video="next" />
         <player-info />
     </div>
 </template>
@@ -40,6 +40,23 @@ export default {
         },
         stop() {
             this.$refs.player.pause();
+        },
+        next() {
+            this.playMusicByState("next");
+        },
+        prev() {
+            this.playMusicByState("prev");
+        },
+        playMusicByState(state) {
+            const activeMusicIndex = this.$store.getters["player/activeIndex"];
+            const index = state === "next" ? activeMusicIndex + 1 : activeMusicIndex - 1;
+            const playList = this.$store.getters["player/activePlaylist"];
+
+            if(playList[index]) {
+                const nextMusicToPlay = playList[index];
+                // mutating the state in vuex will call play automatically
+                playList[index] && this.$store.dispatch("player/setActiveMusic", { music: nextMusicToPlay, index })
+            }
         },
     },
 };
