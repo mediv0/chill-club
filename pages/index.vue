@@ -17,14 +17,14 @@ export default {
         playerTitle: title,
         player,
         slider,
-        noise
+        noise,
     },
 
     created() {
         import("@/data/streams.json").then((module) => {
             this.$store.commit("player/SET_PAYLIST", module.default);
-        })
-    }
+        });
+    },
 };
 </script>
 
