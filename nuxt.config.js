@@ -1,3 +1,5 @@
+require("dotenv").config();
+
 export default {
     // Global page headers: https://go.nuxtjs.dev/config-head
     target: "static",
@@ -36,9 +38,11 @@ export default {
         "@nuxtjs/stylelint-module",
         "@nuxtjs/style-resources",
         "@nuxtjs/svg",
+        "@nuxtjs/google-analytics",
     ],
     // Modules: https://go.nuxtjs.dev/config-modules
     modules: [
+        "@nuxtjs/sitemap",
         [
             "nuxt-font-loader-strategy",
             {
@@ -63,6 +67,15 @@ export default {
             },
         ],
     ],
+
+    sitemap: {
+        hostname: "https://chill-club.vercel.app/",
+        gzip: true,
+    },
+    googleAnalytics: {
+        // Options
+        id: process.env.GOOGLE_ID,
+    },
 
     // module settings
     styleResources: {
