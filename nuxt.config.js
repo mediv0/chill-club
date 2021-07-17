@@ -38,11 +38,15 @@ export default {
         "@nuxtjs/stylelint-module",
         "@nuxtjs/style-resources",
         "@nuxtjs/svg",
-        "@nuxtjs/google-analytics",
+        [
+            "@nuxtjs/google-analytics",
+            {
+                id: "UA-162083764-1",
+            },
+        ],
     ],
     // Modules: https://go.nuxtjs.dev/config-modules
     modules: [
-        "@nuxtjs/google-analytics",
         "@nuxtjs/sitemap",
         [
             "nuxt-font-loader-strategy",
@@ -73,12 +77,6 @@ export default {
         hostname: "https://chill-club.vercel.app/",
         gzip: true,
     },
-    googleAnalytics: {
-        // Options
-        id: process.env.GOOGLE_ID,
-        debug: { sendHitTask: true },
-    },
-
     // module settings
     styleResources: {
         scss: [],
