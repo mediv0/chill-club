@@ -1,6 +1,6 @@
 export default {
     // Global page headers: https://go.nuxtjs.dev/config-head
-
+    target: "static",
     head: {
         title: "chill club - listen to music and chill",
         htmlAttrs: {
