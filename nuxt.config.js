@@ -79,12 +79,11 @@ export default {
     },
     // module settings
     styleResources: {
-        scss: [],
+        scss: ["@/assets/styles/_query.scss"],
     },
 
     // Build Configuration: https://go.nuxtjs.dev/config-build
     build: {
-        extractCSS: true,
         minimize: true,
         optimizeCSS: true,
         html: {
