@@ -1,0 +1,21 @@
+.btn {
+    text-align: center;
+    padding: 15px 20px;
+    border-radius: 10px;
+    transition: 200ms ease;
+
+    &:hover {
+        transform: translateY(-2px);
+    }
+}
+
+.btn-primary {
+    background: var(--primary-blue);
+    color: white;
+}
+
+.btn-secondary {
+    background: white;
+    border: 2px solid black;
+    color: black;
+}

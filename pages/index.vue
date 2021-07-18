@@ -4,6 +4,7 @@
         <player />
         <slider />
         <noise />
+        <pwa :show="showPwaNotification" @close="closePwaPopUp" />
     </div>
 </template>
 
@@ -18,12 +19,34 @@ export default {
         player,
         slider,
         noise,
+        pwa: () => import("@/components/pwa.vue"),
+    },
+    data() {
+        return {
+            showPwaNotification: false,
+        };
     },
 
     created() {
         import("@/data/streams.json").then((module) => {
             this.$store.commit("player/SET_PAYLIST", module.default);
         });
+    },
+
+    mounted() {
+        window.addEventListener("beforeinstallprompt", function (event) {
+            this.showPwaNotification = true;
+            // …
+
+            // save the event to use it later
+            // (it has the important prompt method and userChoice property)
+            window.promptEvent = event;
+        });
+    },
+    methods: {
+        closePwaPopUp() {
+            this.showPwaNotification = false;
+        },
     },
 };
 </script>
