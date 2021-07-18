@@ -34,16 +34,16 @@ export default {
     },
 
     mounted() {
-        window.addEventListener("beforeinstallprompt", function (event) {
-            this.showPwaNotification = true;
-            // …
-
-            // save the event to use it later
-            // (it has the important prompt method and userChoice property)
-            window.promptEvent = event;
-        });
+        this.showPWAPrompt();
     },
     methods: {
+        showPWAPrompt() {
+            window.addEventListener("beforeinstallprompt", (event) => {
+                event.preventDefault();
+                this.showPwaNotification = true;
+                window.promptEvent = event;
+            });
+        },
         closePwaPopUp() {
             this.showPwaNotification = false;
         },

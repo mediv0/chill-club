@@ -20,16 +20,18 @@ export default {
             default: false,
         },
     },
+    mounted() {
+        this.isPWAInstalled();
+    },
     methods: {
         close() {
             this.$emit("close");
         },
         install() {
-            // show the install app prompt
             window.promptEvent.prompt();
-
-            // handle the Decline/Accept choice of the user
-            window.promptEvent.userChoice.then(function (choiceResult) {
+        },
+        isPWAInstalled() {
+            window.addEventListener("appinstalled", () => {
                 this.close();
                 window.promptEvent = null;
             });
