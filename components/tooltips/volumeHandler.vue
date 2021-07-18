@@ -38,12 +38,13 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .volume_tooltip {
     position: absolute;
     top: -61px;
     left: -68px;
-    width: auto;
-    padding: 20px 26px 14px 15px;
+    // overwrite defaults
+    width: auto !important;
+    padding: 20px 26px 14px 15px !important;
 }
 </style>
