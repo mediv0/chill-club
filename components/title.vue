@@ -39,6 +39,9 @@ export default {
 <style lang="scss" scoped>
 .title {
     margin-top: 133px;
+    @include query_IPad() {
+        margin-bottom: 160px;
+    }
     & > h1 {
         pointer-events: none;
         font-size: 7.5rem;
