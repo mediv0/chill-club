@@ -61,8 +61,7 @@ export default {
     overflow: auto;
     padding: 0;
     @include query(422px) {
-        right: 50%;
-        transform: translateX(41%);
+        right: -67px;
         max-width: 280px;
     }
 }
