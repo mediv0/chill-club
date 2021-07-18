@@ -31,5 +31,13 @@ export default {
 <style lang="scss" scoped>
 .main_layout {
     text-align: center;
+    @include query_IPad() {
+        background: red;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
 }
 </style>

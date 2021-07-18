@@ -23,11 +23,11 @@ export default {
     computed: {
         isPlaying() {
             return this.$store.getters["player/playing"];
-        }
+        },
     },
     methods: {
         playMusic() {
-            this.$store.commit("player/SET_PLAYING", !this.isPlaying)
+            this.$store.commit("player/SET_PLAYING", !this.isPlaying);
 
             if (this.isPlaying) {
                 this.play();
@@ -56,13 +56,19 @@ export default {
         },
 
         next() {
-            this.$emit("play_next_video")
-        }
+            this.$emit("play_next_video");
+        },
     },
 };
 </script>
 
 <style lang="scss" scoped>
+@mixin setControlWidth() {
+    width: 70px;
+    height: 70px;
+    min-width: 70px;
+    min-height: 70px;
+}
 .controls {
     display: flex;
     align-items: center;
@@ -71,8 +77,6 @@ export default {
     &__play {
         position: relative;
         z-index: 2;
-        width: 70px;
-        height: 70px;
         border-radius: 50%;
         background: white;
         margin: 0 60px;
@@ -80,13 +84,16 @@ export default {
         align-items: center;
         justify-content: center;
         cursor: pointer;
+        @include setControlWidth();
+        @include query(286px) {
+            margin: 0 25px;
+        }
 
         &__pulse {
             position: absolute;
-            width: 70px;
-            height: 70px;
             background: transparent;
             border-radius: 50%;
+            @include setControlWidth();
         }
 
         &::before {

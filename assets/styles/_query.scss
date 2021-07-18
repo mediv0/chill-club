@@ -1,0 +1,19 @@
+@mixin query($breakPoint) {
+    @media (max-width: $breakPoint) {
+        @content;
+    }
+}
+@mixin query_IPad {
+    // ipad pro
+    @media only screen and (device-width: 1366px) and (max-device-height: 1024px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: landscape) {
+        @content;
+    }
+    @media only screen and (device-width: 1024px) and (max-device-height: 1366px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {
+        @content;
+    }
+
+    // ipad
+    @media only screen and (device-width: 768px) and (max-device-height: 1024px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {
+        @content;
+    }
+}

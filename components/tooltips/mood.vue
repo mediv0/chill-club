@@ -57,6 +57,10 @@ export default {
     top: 0;
     right: -240px;
     cursor: default;
+    @include query(666px) {
+        right: -25%;
+        top: 29px;
+    }
 
     &__title {
         pointer-events: none;

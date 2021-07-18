@@ -19,7 +19,7 @@ import tooltipBox from "@/components/tooltipBox.vue";
 import vClickOutside from "v-click-outside";
 import graph from "@/components/player/graph.vue";
 import musicList from "@/components/tooltips/playlist/list.vue";
-import currentlyPlaying from "@/shared/currentlyPlaying.js"
+import currentlyPlaying from "@/shared/currentlyPlaying.js";
 export default {
     directives: {
         clickOutside: vClickOutside.directive,
@@ -60,6 +60,11 @@ export default {
     width: 350px;
     overflow: auto;
     padding: 0;
+    @include query(422px) {
+        right: 50%;
+        transform: translateX(41%);
+        max-width: 280px;
+    }
 }
 
 .playlist__now {

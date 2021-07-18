@@ -46,6 +46,10 @@ export default {
         letter-spacing: 5px;
         margin-top: -15px;
         filter: drop-shadow(0 0 10px rgba($color: #000000, $alpha: 0.3));
+        word-break: break-all;
+        @include query(375px) {
+            font-size: 5.5rem;
+        }
     }
 
     &__mood {

@@ -75,6 +75,8 @@ export default {
         margin-top: 16.5px;
         pointer-events: none;
         user-select: none;
+        width: 100%;
+        padding: 0 20px;
 
         & > small {
             opacity: 0.7;
