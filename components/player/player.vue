@@ -52,10 +52,10 @@ export default {
             const index = state === "next" ? activeMusicIndex + 1 : activeMusicIndex - 1;
             const playList = this.$store.getters["player/activePlaylist"];
 
-            if(playList[index]) {
+            if (playList[index]) {
                 const nextMusicToPlay = playList[index];
                 // mutating the state in vuex will call play automatically
-                playList[index] && this.store.dispatch("player/setActiveMusic", { music: nextMusicToPlay, index })
+                playList[index] && this.$store.dispatch("player/setActiveMusic", { music: nextMusicToPlay, index });
             }
         },
     },
