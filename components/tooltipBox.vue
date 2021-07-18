@@ -12,7 +12,6 @@
     text-align: left;
     position: absolute;
     z-index: 99;
-    width: 230px;
     height: auto;
     max-height: 360px;
     overflow: auto;

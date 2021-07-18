@@ -56,6 +56,7 @@ export default {
     font-size: 1rem;
     top: 0;
     right: -240px;
+    width: 230px;
     cursor: default;
     @include query(666px) {
         right: -25%;
