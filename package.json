@@ -1,6 +1,7 @@
 {
   "name": "chillClub",
   "version": "1.0.0",
+  "description": "Listen to music and chill",
   "private": true,
   "scripts": {
     "dev": "nuxt",

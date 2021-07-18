@@ -78,6 +78,13 @@ export default {
         hostname: "https://chill-club.vercel.app/",
         gzip: true,
     },
+    pwa: {
+        manifest: {
+            name: "Chill Club",
+            lang: "en",
+            useWebmanifestExtension: false,
+        },
+    },
     // module settings
     styleResources: {
         scss: ["@/assets/styles/_query.scss"],
