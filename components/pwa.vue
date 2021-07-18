@@ -2,7 +2,7 @@
     <transition name="fade">
         <div v-if="show" class="pwa_notification">
             <div class="pwa_notification__img">
-                <img src="@/assets/images/pwa_install_icon.png" class="fit-parent" alt="pwa notification icon" loading="lazy" />
+                <img src="~/assets/images/pwa_install_icon.png" class="fit-parent" alt="pwa notification icon" loading="lazy" />
             </div>
             <h3>Enhance your experience</h3>
             <p>listen to your favorite radio & musics everywhere</p>
