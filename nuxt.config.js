@@ -4,7 +4,7 @@ export default {
     // Global page headers: https://go.nuxtjs.dev/config-head
     target: "static",
     head: {
-        title: "chill club - listen to music and chill",
+        title: "Chill club - listen to music and chill",
         htmlAttrs: {
             lang: "en",
         },
@@ -15,9 +15,34 @@ export default {
             {
                 hid: "description",
                 name: "description",
-                content: "select your mood and listen to songs that fit your mood",
+                content: "Select your mood and listen to songs that fit your mood",
+            },
+            // open graph facebook
+            { property: "og:type", content:"website" },
+            { property: "og:title", content: "Chill club - listen to music and chill" },
+            { property: "og:site_name", content: "Chill club" },
+            { property: "og:type", content: "website" },
+            { property: "og:url", content: "https://chill-club.vercel.app/" },
+            {
+                property: "og:description",
+                content: "Select your mood and listen to songs that fit your mood",
+            },
+            { property: "og:image", content: "https://repository-images.githubusercontent.com/387036634/c5e5aec4-146d-4a7a-ac4a-2eabbe0945da" },
+
+            // Twitter
+            { property: "twitter:card", content: "summary_large_image" },
+            { property: "twitter:url", content: "https://chill-club.vercel.app/" },
+            { property: "twitter:title", content: "Chill club - listen to music and chill" },
+            {
+                property: "twitter:description",
+                content: "Select your mood and listen to songs that fit your mood",
+            },
+            {
+                property: "twitter:image",
+                content: "https://repository-images.githubusercontent.com/387036634/c5e5aec4-146d-4a7a-ac4a-2eabbe0945da",
             },
         ],
+
         link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }],
     },
 
