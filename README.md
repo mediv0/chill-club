@@ -62,3 +62,7 @@ yarn install
 ```bash
 yarn dev
 ```
+
+## Noteworthy
+
+- https://loficlub.vercel.app/
