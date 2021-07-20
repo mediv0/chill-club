@@ -59,6 +59,7 @@ $background-color: rgb(238, 237, 237);
     right: -240px;
     width: 230px;
     cursor: default;
+    padding: 20px 15px;
     @include query(666px) {
         right: -25%;
         top: 29px;

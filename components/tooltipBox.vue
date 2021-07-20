@@ -8,7 +8,6 @@
 
 <style lang="scss" scoped>
 .tooltip_container {
-    padding: 20px 15px;
     text-align: left;
     position: absolute;
     z-index: 99;
