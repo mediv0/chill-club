@@ -2,7 +2,7 @@
     <tooltip-box v-if="show" v-click-outside="onClickOutside" class="mood_tooltip">
         <p class="mood_tooltip__title">select mood</p>
         <ul class="mood_tooltip__list">
-            <li v-for="(mood, i) in moods" :key="i" class="mood_tooltip__list__item" :class="{ active_mood: activeMood === mood.title }" @click="selectMood(mood.title)">
+            <li v-for="(mood, i) in moods" :key="i" class="mood_tooltip__list__item" :tabindex="i + 1" :class="{ active_mood: activeMood === mood.title }" @keydown.enter="selectMood(mood.title)" @click="selectMood(mood.title)">
                 <p>{{ mood.title }}</p>
             </li>
         </ul>
@@ -52,6 +52,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+$background-color: rgb(238, 237, 237);
 .mood_tooltip {
     font-size: 1rem;
     top: 0;
@@ -79,9 +80,11 @@ export default {
             transition: 100ms ease;
             padding: 5px;
             border-radius: 3px;
+            outline: none;
+            @include setTabIndexFocus();
 
             &:hover {
-                background: rgb(238, 237, 237);
+                background: $background-color;
             }
         }
 
@@ -92,6 +95,6 @@ export default {
 }
 
 .active_mood {
-    background: rgb(238, 237, 237);
+    background: $background-color;
 }
 </style>

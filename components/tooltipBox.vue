@@ -13,7 +13,7 @@
     position: absolute;
     z-index: 99;
     height: auto;
-    max-height: 360px;
+    max-height: 390px;
     overflow: auto;
     background: white;
     border-radius: 12px;

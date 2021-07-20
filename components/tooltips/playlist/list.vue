@@ -1,6 +1,6 @@
 <template>
     <ul v-if="getActivePlaylist.length > 0" class="playlist__list">
-        <li v-for="(cat, i) in getActivePlaylist" :key="i" class="playlist__list__item" @click="playMusic(cat, i)">
+        <li v-for="(cat, i) in getActivePlaylist" :key="i" :tabindex="i + 1" class="playlist__list__item" @click="playMusic(cat, i)">
             <p>{{ cat.title }}</p>
             <small>{{ cat.author }}</small>
         </li>
@@ -29,10 +29,11 @@ export default {
 
 <style lang="scss" scoped>
 .playlist__list {
-    padding: 20px 35px;
+    padding: 20px 0;
     &__item {
         cursor: pointer;
-        padding: 15px 0;
+        padding: 15px 30px;
+        margin: 0 0 0 5px;
         color: #313131;
 
         &:hover {

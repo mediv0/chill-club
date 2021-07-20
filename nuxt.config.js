@@ -112,7 +112,7 @@ export default {
     },
     // module settings
     styleResources: {
-        scss: ["@/assets/styles/_query.scss"],
+        scss: ["@/assets/styles/_query.scss", "@/assets/styles/_mixins.scss"],
     },
 
     // Build Configuration: https://go.nuxtjs.dev/config-build

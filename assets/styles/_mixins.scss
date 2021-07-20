@@ -1,0 +1,8 @@
+@mixin setTabIndexFocus() {
+    outline: none;
+    border: 2px solid transparent;
+    &:focus {
+        border: 2px solid;
+        border-color: var(--primary-blue) !important;
+    }
+}
