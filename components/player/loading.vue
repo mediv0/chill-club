@@ -22,7 +22,7 @@ export default {
         allowPlayerToPlay() {
             this.$store.commit("player/SET_IS_MUSIC_PLAYER_AUTHORIZED", true);
             this.$store.dispatch("player/setDefaultActiveMusic")
-            document.removeEventListener("keypress", this.allowPlayer);
+            document.removeEventListener("keypress", this.allowPlayerToPlay);
         },
     },
 };
