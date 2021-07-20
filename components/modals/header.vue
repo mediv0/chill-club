@@ -1,5 +1,5 @@
 <template>
-    <div class="modal_header">
+    <div class="modal_header" @click="closeModal">
         <p>{{ title }}</p>
         <close class="modal_header__close" />
     </div>
@@ -17,6 +17,11 @@ export default {
             required: true,
         },
     },
+    methods: {
+        closeModal() {
+            this.$emit("close");
+        }
+    }
 };
 </script>
 

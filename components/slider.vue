@@ -87,6 +87,8 @@ img[src] {
     top: 0;
     z-index: -2;
     background: transparent;
+    user-select: none;
+    pointer-events: none;
 
     & > img {
         position: fixed;
