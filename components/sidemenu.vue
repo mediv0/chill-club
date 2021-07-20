@@ -39,7 +39,7 @@ export default {
         },
         closeModal() {
             this.isModalVisible = false;
-        }
+        },
     },
 };
 </script>

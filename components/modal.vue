@@ -47,6 +47,9 @@ export default {
     background: white;
     overflow: auto;
     padding: 20px;
+    @include query(400px) {
+        max-width: 100%;
+    }
 }
 
 .modal-enter-active,

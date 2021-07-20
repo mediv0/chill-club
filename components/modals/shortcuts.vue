@@ -57,6 +57,9 @@ export default {
     &__key {
         display: flex;
         align-items: center;
+        @include query(274px) {
+            flex-direction: column;
+        }
 
         &__description {
             margin-left: 10px;
