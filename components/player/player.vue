@@ -12,6 +12,7 @@ import controls from "@/components/player/controls.vue";
 import playerInfo from "@/components/player/info.vue";
 import loading from "@/components/player/loading.vue";
 import ytPlayer from "@/components/player/ytPlayer.vue";
+import { events } from "@/plugins/bus";
 export default {
     components: {
         controls,
@@ -28,6 +29,9 @@ export default {
         getActiveMusic(music) {
             this.play(music);
         },
+    },
+    mounted() {
+        this.initShortkeyEvents();
     },
     methods: {
         // handle yt player
@@ -58,6 +62,10 @@ export default {
                 playList[index] && this.$store.dispatch("player/setActiveMusic", { music: nextMusicToPlay, index });
             }
         },
+        initShortkeyEvents() {
+            events.$on("seek-forward", this.next);
+            events.$on("seek-backward", this.prev);
+        }
     },
 };
 </script>

@@ -41,7 +41,7 @@ export default {
     position: absolute;
     z-index: 95;
     width: 400px;
-    height: 100%;
+    height: 100vh;
     top: 0;
     right: 0;
     background: white;

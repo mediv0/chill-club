@@ -7,6 +7,7 @@
 <script>
 import tooltipBox from "@/components/tooltipBox.vue";
 import vClickOutside from "v-click-outside";
+import { events } from "@/plugins/bus";
 export default {
     directives: {
         clickOutside: vClickOutside.directive,
@@ -23,16 +24,34 @@ export default {
     data() {
         return {
             volume: 70,
-        }
+        };
+    },
+    computed: {
+        isMusicReadyToPlay() {
+            return this.$store.getters["player/isMusicRdy"];
+        },
     },
     watch: {
         volume(volume) {
-            this.$store.commit("player/SET_VOLUME", volume);
-        }
+            this.isMusicReadyToPlay && this.$store.commit("player/SET_VOLUME", volume);
+        },
+    },
+    mounted() {
+        this.initShortkeyEvents();
     },
     methods: {
         onClickOutside() {
             this.$emit("onClickOutside");
+        },
+        volume_up() {
+            this.volume < 101 && (this.volume += 5);
+        },
+        volume_down() {
+            this.volume > 0 && (this.volume -= 5);
+        },
+        initShortkeyEvents() {
+            events.$on("volume-up", this.volume_up);
+            events.$on("volume-down", this.volume_down);
         },
     },
 };

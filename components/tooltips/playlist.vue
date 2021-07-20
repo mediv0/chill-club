@@ -9,7 +9,7 @@
                 </div>
                 <graph class="playlist__now__graph" />
             </div>
-            <musicList @onMusicSelected="onClickOutside" />
+            <musicList />
         </div>
     </tooltip-box>
 </template>

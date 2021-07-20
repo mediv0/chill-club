@@ -21,6 +21,7 @@
 import volume from "@/components/player/volumeAnimation.vue";
 import list from "@/assets/images/player/list.svg?inline";
 import currentlyPlaying from "@/shared/currentlyPlaying.js";
+import { events } from "@/plugins/bus";
 export default {
     components: {
         volume,
@@ -35,6 +36,9 @@ export default {
             activeTooltip: null,
         };
     },
+    mounted() {
+        this.initShortkeyEvents();
+    },
     methods: {
         onClickOutside() {
             this.showTooltip = false;
@@ -42,6 +46,12 @@ export default {
         setActiveTooltip(tooltip) {
             this.activeTooltip = tooltip;
             this.showTooltip = true;
+        },
+        initShortkeyEvents() {
+            events.$on("show-playlist", () => {
+                this.activeTooltip = "playlist";
+                this.showTooltip = !this.showTooltip
+            })
         },
     },
 };

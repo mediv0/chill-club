@@ -5,6 +5,7 @@
         <slider />
         <noise />
         <pwa :show="showPwaNotification" @close="closePwaPopUp" />
+        <navbar />
     </div>
 </template>
 
@@ -13,6 +14,7 @@ import title from "@/components/title.vue";
 import player from "@/components/player/player.vue";
 import slider from "@/components/slider.vue";
 import noise from "@/components/noise.vue";
+import navbar from "@/components/sidemenu.vue";
 export default {
     components: {
         playerTitle: title,
@@ -20,6 +22,7 @@ export default {
         slider,
         noise,
         pwa: () => import("@/components/pwa.vue"),
+        navbar
     },
     data() {
         return {

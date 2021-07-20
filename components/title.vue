@@ -1,7 +1,7 @@
 <template>
     <div class="title">
         <div class="title__mood">
-            <p class="toggle_title" @click="showMoodTooltip = true">
+            <p class="toggle_title" @click="toggleMoodTooltip">
                 Choose your mood
                 <play class="tooltip_toggle" :class="{ rotate_toggle_icon: showMoodTooltip }" />
             </p>
@@ -13,6 +13,7 @@
 
 <script>
 import play from "@/assets/images/player/play.svg?inline";
+import { events } from "@/plugins/bus";
 export default {
     components: {
         play,
@@ -28,9 +29,18 @@ export default {
             return this.$store.getters["player/category"];
         },
     },
+    mounted() {
+        this.initShortkeyEvents();
+    },
     methods: {
         onHideTooltip() {
             this.showMoodTooltip = false;
+        },
+        toggleMoodTooltip() {
+            this.showMoodTooltip = !this.showMoodTooltip;
+        },
+        initShortkeyEvents() {
+            events.$on("show-moods", this.toggleMoodTooltip)
         },
     },
 };

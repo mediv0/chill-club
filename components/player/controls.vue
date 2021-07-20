@@ -14,6 +14,7 @@
 import nextBtn from "@/assets/images/player/nextBtn.svg?inline";
 import play from "@/assets/images/player/play.svg?inline";
 import pause from "@/assets/images/player/pause.svg?inline";
+import { events } from "@/plugins/bus";
 export default {
     components: {
         nextIcon: nextBtn,
@@ -24,6 +25,9 @@ export default {
         isPlaying() {
             return this.$store.getters["player/playing"];
         },
+    },
+    mounted() {
+        this.initShortkeyEvents();
     },
     methods: {
         playMusic() {
@@ -58,6 +62,9 @@ export default {
         next() {
             this.$emit("play_next_video");
         },
+        initShortkeyEvents() {
+            events.$on("toggle-player", this.playMusic);
+        }
     },
 };
 </script>
