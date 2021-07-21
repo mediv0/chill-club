@@ -76,13 +76,13 @@ export default {
             });
         },
         pause() {
-            this.player.pauseVideo();
+            this.player && this.player.pauseVideo();
         },
         resume() {
-            this.player.playVideo();
+            this.player && this.player.playVideo();
         },
         setVolume(volume) {
-            this.player.setVolume(volume);
+            this.player && this.player.setVolume(volume);
         },
     },
 };
