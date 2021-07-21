@@ -1,6 +1,8 @@
 <template>
     <tooltip-box v-if="show" v-click-outside="onClickOutside" class="volume_tooltip">
-        <input v-model="volume" type="range" name="vol" min="0" max="100" style="cursor: pointer" />
+        <div class="slidercontainer">
+            <input v-model="volume" class="slider" type="range" name="vol" min="0" max="100" style="cursor: pointer" />
+        </div>
     </tooltip-box>
 </template>
 
@@ -64,6 +66,41 @@ export default {
     left: -68px;
     // overwrite defaults
     width: auto !important;
-    padding: 20px 26px 14px 15px !important;
+    padding: 17px;
+}
+
+$border-radius: 50%;
+$thumb-size: 22px;
+.slidercontainer {
+    width: 138px;
+}
+
+.slider {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 8px;
+    background: #d3d3d3;
+    outline: none;
+    -webkit-transition: 0.2s;
+    transition: opacity 0.2s;
+    border-radius: 999px;
+}
+@mixin thumb-styles {
+    width: $thumb-size;
+    height: $thumb-size;
+    background: var(--primary-blue);
+    cursor: pointer;
+    border: 3px solid white;
+    border-radius: $border-radius;
+}
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    @include thumb-styles();
+}
+
+.slider::-moz-range-thumb {
+    @include thumb-styles();
 }
 </style>
