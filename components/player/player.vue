@@ -59,7 +59,7 @@ export default {
             if (playList[index]) {
                 const nextMusicToPlay = playList[index];
                 // mutating the state in vuex will call play automatically
-                playList[index] && this.$store.dispatch("player/setActiveMusic", { music: nextMusicToPlay, index });
+                this.$store.dispatch("player/setActiveMusic", { music: nextMusicToPlay, index });
             }
         },
         initShortkeyEvents() {
