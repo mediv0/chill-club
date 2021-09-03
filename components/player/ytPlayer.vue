@@ -41,6 +41,7 @@ export default {
                     playerVars: { autoplay: 1, controls: 0 },
                     events: {
                         onStateChange: this.onPlayerStateChange,
+                        onError: this.onPlayerError,
                         onReady: resolve,
                     },
                 });
@@ -50,9 +51,14 @@ export default {
             this.player.setVolume(70);
             this.player.loadVideoById("gnyW6uaUgk4");
         },
+        onPlayerError() {
+            this.$store.commit("player/SET_HAS_ERROR", true);
+            this.$store.commit("player/SET_PLAYING", false);
+        },
         onPlayerStateChange(e) {
             if (e.data === 1) {
                 // loaded
+                this.$store.commit("player/SET_HAS_ERROR", false);
                 this.$store.commit("player/SET_MUSIC_RDY", true);
             } else if (e.data === -1 || e.data === 3) {
                 this.$store.commit("player/SET_MUSIC_RDY", false);

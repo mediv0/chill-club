@@ -1,12 +1,16 @@
 <template>
     <div class="player_loading">
-        <p v-if="!isMusicPlayerAuthorized">Press any key to play</p>
-        <p v-else-if="!isMusicReadyToPlay">buffering...</p>
+        <div v-if="isMusicAvailable">
+            <p v-if="!isMusicPlayerAuthorized">Press any key to play</p>
+            <p v-else-if="!isMusicReadyToPlay">buffering...</p>
+        </div>
+        <p v-else>this stream cannot be played, try something else.</p>
     </div>
 </template>
 
 <script>
 export default {
+    // this stream cannot be played, try something else
     computed: {
         isMusicPlayerAuthorized() {
             return this.$store.getters["player/isMusicPlayerAuthorized"];
@@ -14,14 +18,17 @@ export default {
         isMusicReadyToPlay() {
             return this.$store.getters["player/isMusicRdy"];
         },
+        isMusicAvailable() {
+            return !this.$store.getters["player/hasError"];
+        },
     },
     mounted() {
-        document.addEventListener("keypress", this.allowPlayerToPlay)
+        document.addEventListener("keypress", this.allowPlayerToPlay);
     },
     methods: {
         allowPlayerToPlay() {
             this.$store.commit("player/SET_IS_MUSIC_PLAYER_AUTHORIZED", true);
-            this.$store.dispatch("player/setDefaultActiveMusic")
+            this.$store.dispatch("player/setDefaultActiveMusic");
             document.removeEventListener("keypress", this.allowPlayerToPlay);
         },
     },
