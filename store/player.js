@@ -12,6 +12,8 @@ export const state = () => ({
     volume: 70,
     // active music index
     activeIndex: 0,
+    // check for music availability
+    hasError: false,
 });
 
 export const mutations = {
@@ -39,6 +41,9 @@ export const mutations = {
     SET_ACTIVE_INDEX(state, activeIndex) {
         state.activeIndex = activeIndex;
     },
+    SET_HAS_ERROR(state, hasError) {
+        state.hasError = hasError;
+    }
 };
 
 export const actions = {
@@ -72,4 +77,5 @@ export const getters = {
         const playList = getters.playList;
         return playList.filter((playlist) => playlist.category === category);
     },
+    hasError: (state) => state.hasError,
 };
