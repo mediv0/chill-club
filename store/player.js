@@ -1,6 +1,6 @@
 export const state = () => ({
     // default category
-    category: "Study & Chill",
+    category: "Study Chill",
     playing: null,
     // checks if music loaded in yt player or not
     isMusicRdy: false,

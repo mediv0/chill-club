@@ -42,9 +42,16 @@ export default {
         selectMood(mood) {
             if (!this.$store.getters["slider/isSliderChanging"]) {
                 this.activeMood = mood;
+                this.setMoodUrlQuery(mood);
                 this.$store.commit("player/SET_CATEGORY", mood);
                 this.$store.dispatch("player/setDefaultActiveMusic");
                 this.onClickOutside();
+            }
+        },
+        setMoodUrlQuery(value) {
+            if (history.pushState) {
+                const newurl = window.location.protocol + "//" + window.location.host + window.location.pathname + `?mood=${value}`;
+                window.history.pushState({ path: newurl }, "", newurl);
             }
         },
     },

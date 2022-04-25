@@ -22,12 +22,22 @@ export default {
         slider,
         noise,
         pwa: () => import("@/components/pwa.vue"),
-        navbar
+        navbar,
     },
     data() {
         return {
             showPwaNotification: false,
         };
+    },
+
+    asyncData({ req, store }) {
+        const moodParams = new URLSearchParams(req._parsedOriginalUrl.search);
+        const mood = moodParams.get("mood");
+
+        if (mood) {
+            store.commit("player/SET_CATEGORY", mood);
+            store.dispatch("player/setDefaultActiveMusic");
+        }
     },
 
     created() {
