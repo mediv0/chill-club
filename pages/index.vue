@@ -30,17 +30,25 @@ export default {
         };
     },
 
-    asyncData({ req, store }) {
-        const moodParams = new URLSearchParams(req._parsedOriginalUrl.search);
+    // asyncData({ req, store }) {
+    //     const moodParams = new URLSearchParams(req._parsedOriginalUrl.search);
+    //     const mood = moodParams.get("mood");
+
+    //     if (mood) {
+    //         store.commit("player/SET_CATEGORY", mood);
+    //         store.dispatch("player/setDefaultActiveMusic");
+    //     }
+    // },
+
+    created() {
+        const moodParams = new URLSearchParams(window.location.search);
         const mood = moodParams.get("mood");
 
         if (mood) {
             store.commit("player/SET_CATEGORY", mood);
             store.dispatch("player/setDefaultActiveMusic");
         }
-    },
 
-    created() {
         import("@/data/streams.json").then((module) => {
             this.$store.commit("player/SET_PAYLIST", module.default);
         });
