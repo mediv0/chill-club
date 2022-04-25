@@ -51,8 +51,8 @@ export default {
         const mood = moodParams.get("mood");
 
         if (mood) {
-            store.commit("player/SET_CATEGORY", mood);
-            store.dispatch("player/setDefaultActiveMusic");
+            this.$store.commit("player/SET_CATEGORY", mood);
+            this.$store.dispatch("player/setDefaultActiveMusic");
         }
         this.showPWAPrompt();
     },
