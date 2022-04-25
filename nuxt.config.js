@@ -2,6 +2,10 @@ require("dotenv").config();
 
 export default {
     // Global page headers: https://go.nuxtjs.dev/config-head
+    server: {
+        port: 3000,
+        host: "0.0.0.0"
+    },
     target: "static",
     head: {
         title: "Chill club - listen to music and chill",

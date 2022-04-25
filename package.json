@@ -14,7 +14,8 @@
     "lint": "yarn lint:js && yarn lint:style",
     "test": "jest",
     "static": "nuxt generate",
-    "deploy": "push-dir --dir=dist --branch=gh-pages --cleanup"
+    "deploy": "push-dir --dir=dist --branch=gh-pages --cleanup",
+    "build:docker": "docker-compose up -d --build"
   },
   "lint-staged": {
     "*.{js,vue}": "eslint",
