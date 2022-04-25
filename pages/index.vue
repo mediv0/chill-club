@@ -15,6 +15,7 @@ import player from "@/components/player/player.vue";
 import slider from "@/components/slider.vue";
 import noise from "@/components/noise.vue";
 import navbar from "@/components/sidemenu.vue";
+import moodList from "@/data/mood.json";
 export default {
     components: {
         playerTitle: title,
@@ -50,7 +51,7 @@ export default {
         const moodParams = new URLSearchParams(window.location.search);
         const mood = moodParams.get("mood");
 
-        if (mood) {
+        if (mood && this.isValidMood(mood)) {
             this.$store.commit("player/SET_CATEGORY", mood);
             this.$store.dispatch("player/setDefaultActiveMusic");
         }
@@ -66,6 +67,10 @@ export default {
         },
         closePwaPopUp() {
             this.showPwaNotification = false;
+        },
+
+        isValidMood(mood) {
+            return moodList.some((item) => item.title === mood);
         },
     },
 };
