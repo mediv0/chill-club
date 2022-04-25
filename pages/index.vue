@@ -41,6 +41,12 @@ export default {
     // },
 
     created() {
+        import("@/data/streams.json").then((module) => {
+            this.$store.commit("player/SET_PAYLIST", module.default);
+        });
+    },
+
+    mounted() {
         const moodParams = new URLSearchParams(window.location.search);
         const mood = moodParams.get("mood");
 
@@ -48,13 +54,6 @@ export default {
             store.commit("player/SET_CATEGORY", mood);
             store.dispatch("player/setDefaultActiveMusic");
         }
-
-        import("@/data/streams.json").then((module) => {
-            this.$store.commit("player/SET_PAYLIST", module.default);
-        });
-    },
-
-    mounted() {
         this.showPWAPrompt();
     },
     methods: {
