@@ -43,12 +43,13 @@ export const mutations = {
     },
     SET_HAS_ERROR(state, hasError) {
         state.hasError = hasError;
-    }
+    },
 };
 
 export const actions = {
     setActiveMusic({ commit, getters }, { music, index }) {
         if (getters.isMusicPlayerAuthorized) {
+            commit("SET_HAS_ERROR", false);
             commit("SET_ACTIVE_MUSIC", music);
             commit("SET_ACTIVE_INDEX", index);
         }
