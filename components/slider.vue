@@ -1,7 +1,7 @@
 <template>
     <div class="slider">
         <img class="active" alt="active background image" />
-        <img class="new" alt="slider background image"/>
+        <img class="new" alt="slider background image" />
     </div>
 </template>
 
@@ -52,8 +52,13 @@ export default {
             this.$store.commit("slider/SET_SLIDER_CHANGING", true);
             this.isSliderChanging = true;
             this.loadImage(image, "new");
-            this.toggleSliderAnimation("add");
 
+            if (this.active.src === "") {
+                this.active.src = this.new.src;
+                return;
+            }
+
+            this.toggleSliderAnimation("add");
             // for some reason animationEnd event not working here ( multiple calls )
             // this hack should work for now
             setTimeout(() => {
