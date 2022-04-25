@@ -53,12 +53,10 @@ export default {
             this.isSliderChanging = true;
             this.loadImage(image, "new");
 
-            if (this.active.src === "") {
-                this.active.src = this.new.src;
-                return;
+            if (this.active.src !== "") {
+                this.toggleSliderAnimation("add");
             }
 
-            this.toggleSliderAnimation("add");
             // for some reason animationEnd event not working here ( multiple calls )
             // this hack should work for now
             setTimeout(() => {
