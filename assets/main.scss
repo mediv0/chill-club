@@ -1,0 +1,41 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body {
+    font-size: 10px;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    padding: 0;
+    margin: 0;
+}
+body {
+    // font default styles
+    // font-family: "Yekan Bakh";
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+*,
+*::after,
+*::before {
+    padding: 0;
+    margin: 0;
+    box-sizing: inherit;
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
