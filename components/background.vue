@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const backgrounds = shallowRef([1, 2, 3, 4]);
+const backgrounds = shallowRef([1, 2, 3, 4,5,6,7,8,9,10,11]);
 
 const primaryBackground = ref(backgrounds.value[0]);
 const secondaryBackground = ref(backgrounds.value[1]);
