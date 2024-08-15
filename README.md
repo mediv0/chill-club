@@ -5,6 +5,7 @@
   <h1 align="center">Chill Club</h1>
   <p align="center">listen to music and chill</p>
   <p align="center">[UNDER DEVELOPMENT]</p>
+  <p align="center">[CHECK V2 branch for updates]</p>
   <a href="https://chill-club.vercel.app/" target="_blank">Live</a>
   
   
