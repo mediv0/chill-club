@@ -4,11 +4,16 @@
 
 @import url("https://fonts.googleapis.com/css2?family=Saira:ital,wght@0,100..900;1,100..900&display=swap");
 
+:root {
+  --color-primary: #2e48c9;
+  --color-gray-1: #a0a0a0;
+}
+
 html,
 body {
   font-size: 10px;
   box-sizing: border-box;
-  overflow-x: hidden;
+  overflow: hidden;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
   -moz-osx-font-smoothing: grayscale;
@@ -45,4 +50,43 @@ li {
 a {
   text-decoration: none;
   color: inherit;
+}
+
+.glow_blue {
+  text-shadow: #01d1ff 1px 0 20px;
+}
+
+.glow_red {
+  text-shadow: #db00ff 1px 0 20px;
+}
+
+.player_button {
+  @apply w-[48px] h-[48px] rounded-full flex items-center justify-center bg-primary cursor-pointer;
+  transition: all cubic-bezier(0.075, 0.82, 0.165, 1) 0.8s;
+
+  &:hover {
+    scale: 0.95;
+  }
+
+  &:active {
+    scale: 0.9;
+  }
+}
+
+.player_button_icon {
+  @apply w-[24px] h-[24px] text-white;
+}
+
+.background_cover_full {
+  @apply absolute inset-0 w-full h-full object-cover;
+}
+
+.navbar_item {
+  @apply text-[14px] font-bold;
+  @extend .glow_blue;
+}
+
+.listeners_item {
+  @apply text-[15px] text-white;
+  @extend .glow_red;
 }

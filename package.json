@@ -11,6 +11,8 @@
   },
   "dependencies": {
     "@nuxt/image": "^1.7.0",
+    "@placetopay/iconsax-vue": "^1.0.0",
+    "@vueuse/core": "^10.11.1",
     "nuxt": "^3.12.4",
     "vue": "latest"
   },

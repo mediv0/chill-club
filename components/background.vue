@@ -24,18 +24,18 @@ defineExpose({
 
 <template>
   <div
-    class="relative bg-red inset-0 w-full h-screen select-none pointer-events-none"
+    class="absolute bg-red inset-0 w-full h-screen select-none pointer-events-none"
   >
     <img
       alt="background image"
       :src="`../backgrounds/${primaryBackground}.gif`"
-      class="absolute inset-0 w-full h-full object-cover"
+      class="background_cover_full"
     />
 
     <img
       alt="preload"
       :src="`../backgrounds/${secondaryBackground}.gif`"
-      class="absolute inset-0 w-full h-full object-cover invisible`"
+      class="background_cover_full invisible`"
     />
   </div>
 </template>

@@ -12,9 +12,12 @@ const changeBackground = () => {
 
 <template>
   <div>
-    <Loading @contentLoaded="isLoadingDone = true" v-if="!isLoadingDone" />
+    <Navbar />
+    <!-- <Loading @contentLoaded="isLoadingDone = true" v-if="!isLoadingDone" /> -->
     <Listeners @changeBackground="changeBackground" />
-    <Background ref="backgroundRef" />
+    <ContentFrame class="mb-[50px]" />
+
+    <Background ref="backgroundRef" class="select-none pointer-events-none" />
     <noise />
   </div>
 </template>
