@@ -5,7 +5,7 @@ import Volume from "./playerControls/volume.vue";
 
 <template>
   <div
-    class="flex items-center justify-between w-full bg-white rounded-full px-[46px] py-[20px]"
+    class="player flex items-center justify-between w-full bg-white rounded-full px-[46px] py-[20px]"
   >
     <div class="flex items-center">
       <img
@@ -24,3 +24,11 @@ import Volume from "./playerControls/volume.vue";
     </div>
   </div>
 </template>
+
+<style lang="scss" scoped>
+.player {
+  -webkit-box-shadow: 0px -21px 64px -10px rgba(0, 0, 0, 0.24);
+  -moz-box-shadow: 0px -21px 64px -10px rgba(0, 0, 0, 0.24);
+  box-shadow: 0px -21px 64px -10px rgba(0, 0, 0, 0.24);
+}
+</style>

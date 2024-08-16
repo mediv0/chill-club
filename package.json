@@ -10,6 +10,7 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
+    "@mediv0/v-bucket": "^1.1.2",
     "@nuxt/image": "^1.7.0",
     "@placetopay/iconsax-vue": "^1.0.0",
     "@vueuse/core": "^10.11.1",

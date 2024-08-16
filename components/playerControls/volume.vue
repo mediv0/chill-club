@@ -9,16 +9,16 @@ import { onClickOutside } from "@vueuse/core";
 
 const isVolumeSliderOpen = ref(false);
 const volumeSlider = ref<HTMLDivElement | null>(null);
-const volumeValue = ref(70);
+const volumeValue = ref(71);
 
 const currentVolumeIcon = computed(() => {
-    // i know i can do it with a fkign array of object or object or hash map, get that uncle bob cleancode  shit out of here
+  // i know i can do it with a fkign array of object or object or hash map, get that uncle bob cleancode  shit out of here
   if (volumeValue.value > 70) {
     return VolumeHighIcon;
   } else if (volumeValue.value > 30) {
-    return VolumeLowIcon;
-  } else if (volumeValue.value > 0) {
     return VolumeLow1Icon;
+  } else if (volumeValue.value > 1) {
+    return VolumeLowIcon;
   } else {
     return VolumeMuteIcon;
   }
@@ -49,7 +49,6 @@ onClickOutside(volumeSlider, (e: MouseEvent) => {
           v-model="volumeValue"
           type="range"
           step="1"
-          value="50"
           min="1"
           max="100"
           class="vertical-slider"
@@ -70,18 +69,17 @@ onClickOutside(volumeSlider, (e: MouseEvent) => {
   left: 50%;
   transform: translate(-50%, -50%) rotate(270deg);
   accent-color: var(--color-primary);
-  transform-origin: bottom center;
 }
 
 .scale-enter-active,
 .scale-leave-active {
-  transition: all 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+  transition: all 0.8s cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 
 .scale-enter-from,
 .scale-leave-to {
   opacity: 0;
   scale: 0;
-  transform-origin: bottom center;
+  transform-origin: center bottom;
 }
 </style>

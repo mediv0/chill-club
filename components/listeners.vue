@@ -1,5 +1,9 @@
 <script setup lang="ts">
+import { useBucket } from "@mediv0/v-bucket";
+
 const emit = defineEmits(["changeBackground"]);
+
+const bucket = useBucket();
 
 // event fns
 const changeBackground = () => {
@@ -8,9 +12,8 @@ const changeBackground = () => {
 
 // listeners
 const keydownListener = (e: KeyboardEvent) => {
-  if (e.key === "g") {
-    changeBackground();
-  }
+  if (e.key === "Escape") bucket.commit("CLOSE_DRAWER");
+  if (e.key === "g") changeBackground();
 };
 
 onMounted(() => {

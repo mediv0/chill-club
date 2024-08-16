@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@mediv0/v-bucket':
+        specifier: ^1.1.2
+        version: 1.1.2(vue@3.4.35)
       '@nuxt/image':
         specifier: ^1.7.0
         version: 1.7.0(ioredis@5.4.1)(magicast@0.3.4)(rollup@4.20.0)
@@ -671,6 +674,11 @@ packages:
   '@mapbox/node-pre-gyp@1.0.11':
     resolution: {integrity: sha512-Yhlar6v9WQgUp/He7BdgzOz8lqMQ8sU+jkCq7Wx8Myc5YFJLbEe7lgui/V7G1qB1DJykHSGwreceSaD60Y0PUQ==}
     hasBin: true
+
+  '@mediv0/v-bucket@1.1.2':
+    resolution: {integrity: sha512-Z9tS1tXEozZTLjz5J16Kh1rzIrqt8olLrLWz9uGoE6QEKbiLhGCdJTaXCJAZMiGSD81uStOa+4EQ64m9+gn9ZA==}
+    peerDependencies:
+      vue: ^3.0.0
 
   '@netlify/functions@2.8.1':
     resolution: {integrity: sha512-+6wtYdoz0yE06dSa9XkP47tw5zm6g13QMeCwM3MmHx1vn8hzwFa51JtmfraprdkL7amvb7gaNM+OOhQU1h6T8A==}
@@ -3941,6 +3949,11 @@ snapshots:
     transitivePeerDependencies:
       - encoding
       - supports-color
+
+  '@mediv0/v-bucket@1.1.2(vue@3.4.35)':
+    dependencies:
+      sass: 1.77.8
+      vue: 3.4.35
 
   '@netlify/functions@2.8.1':
     dependencies:
