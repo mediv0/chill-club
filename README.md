@@ -17,7 +17,7 @@
 ## **Best music streams hand picked for you**
 Chill club is a place for listening to live 24/7 musics Comes with more than +10 live streaming radios in a variety of categories.
 
-![Chill club](https://i.imgur.com/WG3YvuO.jpeg)
+![Chill club](https://i.imgur.com/QgiRUb5.png)
 <br>
 <br>
 <br>
