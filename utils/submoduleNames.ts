@@ -1,0 +1,7 @@
+export const SUBMODULE = {
+  NONE: "",
+  STATIONS: "STATIONS",
+  TODO: "TODO",
+  JOURNAL: "JOURNAL",
+  POMODORO: "POMODORO",
+};

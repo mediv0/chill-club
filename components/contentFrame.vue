@@ -17,14 +17,27 @@ const setTime = () => {
   });
 };
 
+
+const activeStationIndex = computed(
+  () => bucket.getters["GET_ACTIVE_STATION_INDEX"]
+);
+
 onMounted(() => {
   setTime();
   setInterval(setTime, 1000 * 60);
 });
 
 const loadAllStations = () => {
-  bucket.commit("SET_DRAWER_HEIGHT", 582);
+  bucket.dispatch("SHOW_ALL_STATIONS")
 };
+
+
+const loadNextStation = () => {
+  bucket.dispatch("GET_NEXT_STATION_TO_PLAY", activeStationIndex.value + 1);
+}
+const loadPreviousStation = () => {
+  bucket.dispatch("GET_NEXT_STATION_TO_PLAY", activeStationIndex.value -1);
+}
 
 </script>
 
@@ -36,14 +49,14 @@ const loadAllStations = () => {
     <div
       class="container uppercase flex justify-between text-[15px] font-medium text-white"
     >
-      <p class="glow_blue flex items-center cursor-pointer">
+      <p class="glow_blue flex items-center cursor-pointer" @click="loadPreviousStation" >
         <ArrowLeftIcon class="w-[28px] h-[28px] mr-[10px]" />
         Previous stations
       </p>
       <p class="glow_red cursor-pointer" @click="loadAllStations">
         See all stations
       </p>
-      <p class="glow_blue flex items-center cursor-pointer">
+      <p class="glow_blue flex items-center cursor-pointer" @click="loadNextStation">
         next station
         <ArrowRight1Icon class="w-[28px] h-[28px] ml-[10px]" />
       </p>

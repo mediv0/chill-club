@@ -18,6 +18,8 @@ export default {
       primary: "var(--color-primary)",
       gray: {
         1: "var(--color-gray-1)",
+        2: "var(--color-gray-2)",
+        3: "var(--color-gray-3)"
       },
     },
     extend: {},

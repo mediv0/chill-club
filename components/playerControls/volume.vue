@@ -5,11 +5,15 @@ import {
   VolumeLow1Icon,
   VolumeMuteIcon,
 } from "@placetopay/iconsax-vue/bulk";
+import { useBucket } from "@mediv0/v-bucket";
 import { onClickOutside } from "@vueuse/core";
+
+const bucket = useBucket();
 
 const isVolumeSliderOpen = ref(false);
 const volumeSlider = ref<HTMLDivElement | null>(null);
-const volumeValue = ref(71);
+
+const volumeValue = computed(() => bucket.getters["GET_VOLUME"]);
 
 const currentVolumeIcon = computed(() => {
   // i know i can do it with a fkign array of object or object or hash map, get that uncle bob cleancode  shit out of here
@@ -28,6 +32,11 @@ onClickOutside(volumeSlider, (e: MouseEvent) => {
   e.stopPropagation();
   isVolumeSliderOpen.value = false;
 });
+
+const onVolumeChange = (e: Event) => {
+  const inputElement = e.target as HTMLInputElement;
+  bucket.commit("SET_VOLUME", parseInt(inputElement.value));
+};
 </script>
 
 <template>
@@ -46,7 +55,8 @@ onClickOutside(volumeSlider, (e: MouseEvent) => {
         class="absolute left-0 bottom-0 w-[50px] h-[200px] bg-white shadow-2xl rounded-full"
       >
         <input
-          v-model="volumeValue"
+          @input="onVolumeChange"
+          :value="volumeValue"
           type="range"
           step="1"
           min="1"

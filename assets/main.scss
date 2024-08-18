@@ -7,6 +7,8 @@
 :root {
   --color-primary: #2e48c9;
   --color-gray-1: #a0a0a0;
+  --color-gray-2: #efefef;
+  --color-gray-3: #bbbbbb;
 }
 
 html,
@@ -89,4 +91,9 @@ a {
 .listeners_item {
   @apply text-[15px] text-white;
   @extend .glow_red;
+}
+
+iframe#ytPlayer {
+  position: absolute !important;
+  top: 0 !important;
 }
