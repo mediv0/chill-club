@@ -65,10 +65,20 @@ watch(onActiveStationChange, (newStation: CurrentActiveStation) => {
 </template>
 
 <style lang="scss" scoped>
+@import "@/assets/query.scss";
+
 .player {
   -webkit-box-shadow: 0px -21px 64px -10px rgba(0, 0, 0, 0.24);
   -moz-box-shadow: 0px -21px 64px -10px rgba(0, 0, 0, 0.24);
   box-shadow: 0px -21px 64px -10px rgba(0, 0, 0, 0.24);
+
+  @include query(654px) {
+    border-bottom-right-radius: 0px;
+    border-bottom-left-radius: 0px;
+
+    border-top-left-radius: 60px;
+    border-top-right-radius: 60px;
+  }
 }
 
 .avatar {

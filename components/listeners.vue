@@ -51,10 +51,19 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div class="relative z-10 px-[70px] mt-[20px] space-y-2">
+  <div class="listener_container relative z-10 px-[70px] mt-[20px] space-y-2">
     <li class="listeners_item">[G] Change Background</li>
     <li class="listeners_item">[Arrow Right] Next Station</li>
     <li class="listeners_item">[Arrow Left] Previous Station</li>
     <li class="listeners_item">[S] See all Stations</li>
   </div>
 </template>
+
+<style lang="scss" scoped>
+@import "@/assets/query.scss";
+.listener_container {
+  @include query(710px) {
+    text-align: center;
+  }
+}
+</style>

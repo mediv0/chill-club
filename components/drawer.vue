@@ -34,15 +34,31 @@ onClickOutside(drawer, (e: MouseEvent) => {
     }"
   >
     <transition name="slide-fade">
-      <component :is="subModule" class="px-[50px]" />
+      <component :is="subModule" class="submodule px-[50px]" />
     </transition>
   </div>
 </template>
 
 <style lang="scss" scoped>
+@import "@/assets/query.scss";
 .drawer {
   bottom: 0;
   transition: all 1.2s cubic-bezier(0.075, 0.82, 0.165, 1);
+
+  @include query(560px) {
+    padding: 50px 20px
+  }
+
+  @include query(410px) {
+    border-radius: 30px;
+    padding: 50px 20px
+  }
+}
+
+.submodule {
+  @include query(470px) {
+    padding: 0px 10px
+  }
 }
 
 .slide-fade-enter-active,

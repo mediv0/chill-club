@@ -1,8 +1,8 @@
 <template>
   <div
-    class="relative z-[999] flex items-center justify-between w-full px-[70px] pt-[20px]"
+    class="navbar relative z-[999] flex items-center justify-between w-full px-[70px] pt-[20px]"
   >
-    <div class="flex items-center">
+    <div class="logo flex items-center">
       <img
         class="w-[41px] h-[41px]"
         src="../assets/logo.png"
@@ -31,3 +31,25 @@
     </div>
   </div>
 </template>
+
+
+<style lang="scss" scoped>
+@import "@/assets/query.scss";
+.navbar {
+  @include query(710px) {
+    flex-direction: column;
+    padding: 10px 20px;
+  }
+}
+
+.logo {
+  @include query(710px) {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+}
+
+
+</style>

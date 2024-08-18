@@ -43,7 +43,7 @@ const loadPreviousStation = () => {
 
 <template>
   <div class="absolute inset-0 z-[100] flex flex-col justify-end items-center">
-    <p class="text-white text-[180px] select-none pointer-events-none">
+    <p class="time text-white text-[180px] select-none pointer-events-none">
       {{ time }}
     </p>
     <div
@@ -69,7 +69,28 @@ const loadPreviousStation = () => {
 </template>
 
 <style scoped lang="scss">
+@import "@/assets/query.scss";
 .container {
   width: 680px;
+
+  @include query(654px) {
+    width: 100%;
+  }
+}
+
+
+.time {
+  text-align: center;
+  @include query(804px) {
+    font-size: 130px;
+  }
+
+  @include query(605px) {
+    font-size: 90px;
+  }
+
+  @include query(429px) {
+    font-size: 60px;
+  }
 }
 </style>
