@@ -2,7 +2,11 @@
 export default defineNuxtConfig({
   compatibilityDate: "2024-04-03",
   css: ["~/assets/main.scss"],
-  devtools: { enabled: true },
+  devtools: { enabled: false },
+
+  nitro: {
+    static: true,
+  },
 
   postcss: {
     plugins: {
@@ -11,5 +15,5 @@ export default defineNuxtConfig({
     },
   },
 
-  modules: ["@nuxt/image"]
+  modules: ["@nuxt/image"],
 });

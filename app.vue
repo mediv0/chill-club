@@ -13,7 +13,7 @@ const changeBackground = () => {
 <template>
   <div>
     <Navbar />
-    <!-- <Loading @contentLoaded="isLoadingDone = true" v-if="!isLoadingDone" /> -->
+    <Loading @contentLoaded="isLoadingDone = true" v-if="!isLoadingDone" />
     <Listeners @changeBackground="changeBackground" />
     <ContentFrame class="content_frame mb-[50px]" />
 
