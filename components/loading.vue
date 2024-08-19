@@ -4,18 +4,21 @@ const emit = defineEmits(["contentLoaded"]);
 const loadingContainer = ref<HTMLDivElement>();
 const isLoaded = ref(false);
 
-
 const animationendHandler = () => {
-    emit("contentLoaded");
-}
+  emit("contentLoaded");
+};
+
+const isDocumentLoaded = () => {
+  if (document.readyState === "complete") {
+    isLoaded.value = true;
+  }
+};
 
 onMounted(() => {
-  document.addEventListener("readystatechange", (event) => {
-    const target = event.target as Document;
-    if (target.readyState === "complete") {
-      isLoaded.value = true;
-    }
-  });
+  // Check immediately in case the document is already loaded
+  isDocumentLoaded();
+  document.addEventListener("DOMContentLoaded", isDocumentLoaded);
+  window.addEventListener("load", isDocumentLoaded);
 });
 
 const classes = computed(() => {
@@ -37,7 +40,11 @@ const classes = computed(() => {
 </script>
 
 <template>
-  <div ref="loadingContainer" @animationend="animationendHandler" :class="classes">
+  <div
+    ref="loadingContainer"
+    @animationend="animationendHandler"
+    :class="classes"
+  >
     <h1 class="text-center text-[#ffc629] italic">
       "Generating Your Experience"
     </h1>
