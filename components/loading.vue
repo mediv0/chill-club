@@ -38,7 +38,7 @@ const classes = computed(() => {
 
 <template>
   <div ref="loadingContainer" @animationend="animationendHandler" :class="classes">
-    <h1 class="text-center text-yellow-300 italic">
+    <h1 class="text-center text-[#ffc629] italic">
       "Generating Your Experience"
     </h1>
     <p class="text-[16px] text-white">Please wait. . .</p>
@@ -47,6 +47,7 @@ const classes = computed(() => {
 
 <style scoped lang="scss">
 .loading {
+  z-index: 9999;
   background: url("../assets/loading noise.gif") no-repeat center;
   background-size: cover;
   font-size: clamp(1rem, 10vw, 4rem);
