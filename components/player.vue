@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import Play from "./playerControls/play.vue";
 import Volume from "./playerControls/volume.vue";
-import { useBucket } from "@mediv0/v-bucket";
+import { useBucket } from "@mediv0/v-bucket/dist/v-bucket.esm-browser.prod";
 import type { CurrentActiveStation, Station } from "@/types";
 
 const bucket = useBucket();

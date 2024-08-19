@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useFetch } from "@vueuse/core";
-import { useBucket } from "@mediv0/v-bucket";
+import { useBucket } from "@mediv0/v-bucket/dist/v-bucket.esm-browser.prod";
 import StationCard from "../cards/stationCard.vue";
 import type { StationsApiResponse } from "~/types";
 

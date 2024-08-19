@@ -3,7 +3,7 @@ import type { Station } from "@/types";
 import Label from "../elements/label.vue";
 import { Link2Icon } from "@placetopay/iconsax-vue/outline";
 import type { PropType } from "vue";
-import { useBucket } from "@mediv0/v-bucket";
+import { useBucket } from "@mediv0/v-bucket/dist/v-bucket.esm-browser.prod";
 
 const bucket = useBucket();
 
@@ -19,7 +19,7 @@ const { station, index } = defineProps({
 });
 
 const onStationSelected = () => {
-  bucket.dispatch("SET_ACTIVE_STATION", {station, index});
+  bucket.dispatch("SET_ACTIVE_STATION", { station, index });
 };
 </script>
 

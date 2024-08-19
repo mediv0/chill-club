@@ -5,7 +5,7 @@ import {
   VolumeLow1Icon,
   VolumeMuteIcon,
 } from "@placetopay/iconsax-vue/bulk";
-import { useBucket } from "@mediv0/v-bucket";
+import { useBucket } from "@mediv0/v-bucket/dist/v-bucket.esm-browser.prod";
 import { onClickOutside } from "@vueuse/core";
 
 const bucket = useBucket();

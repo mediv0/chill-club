@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { onClickOutside } from "@vueuse/core";
-import { useBucket } from "@mediv0/v-bucket";
+import { useBucket } from "@mediv0/v-bucket/dist/v-bucket.esm-browser.prod";
 import Stations from "./modules/stations.vue";
 const bucket = useBucket();
 const drawer = ref<HTMLDivElement | null>(null);
@@ -46,18 +46,18 @@ onClickOutside(drawer, (e: MouseEvent) => {
   transition: all 1.2s cubic-bezier(0.075, 0.82, 0.165, 1);
 
   @include query(560px) {
-    padding: 50px 20px
+    padding: 50px 20px;
   }
 
   @include query(410px) {
     border-radius: 30px;
-    padding: 50px 20px
+    padding: 50px 20px;
   }
 }
 
 .submodule {
   @include query(470px) {
-    padding: 0px 10px
+    padding: 0px 10px;
   }
 }
 

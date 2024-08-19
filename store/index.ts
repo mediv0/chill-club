@@ -1,7 +1,7 @@
 /// @ts-ignore
 /// @ts-nocheck
 
-import { createBucket } from "@mediv0/v-bucket";
+import { createBucket } from "@mediv0/v-bucket/dist/v-bucket.esm-browser.prod";
 import type { CurrentActiveStation, Station } from "~/types";
 
 const bucket = createBucket({

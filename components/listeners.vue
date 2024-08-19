@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useBucket } from "@mediv0/v-bucket";
+import { useBucket } from "@mediv0/v-bucket/dist/v-bucket.esm-browser.prod";
 
 const emit = defineEmits(["changeBackground"]);
 

@@ -3,7 +3,7 @@ import {
   ArrowLeftIcon,
   ArrowRight1Icon,
 } from "@placetopay/iconsax-vue/outline";
-import { useBucket } from "@mediv0/v-bucket";
+import { useBucket } from "@mediv0/v-bucket/dist/v-bucket.esm-browser.prod";
 
 const bucket = useBucket();
 
@@ -17,7 +17,6 @@ const setTime = () => {
   });
 };
 
-
 const activeStationIndex = computed(
   () => bucket.getters["GET_ACTIVE_STATION_INDEX"]
 );
@@ -28,17 +27,15 @@ onMounted(() => {
 });
 
 const loadAllStations = () => {
-  bucket.dispatch("SHOW_ALL_STATIONS")
+  bucket.dispatch("SHOW_ALL_STATIONS");
 };
-
 
 const loadNextStation = () => {
   bucket.dispatch("GET_NEXT_STATION_TO_PLAY", activeStationIndex.value + 1);
-}
+};
 const loadPreviousStation = () => {
-  bucket.dispatch("GET_NEXT_STATION_TO_PLAY", activeStationIndex.value -1);
-}
-
+  bucket.dispatch("GET_NEXT_STATION_TO_PLAY", activeStationIndex.value - 1);
+};
 </script>
 
 <template>
@@ -49,14 +46,20 @@ const loadPreviousStation = () => {
     <div
       class="container uppercase flex justify-between text-[15px] font-medium text-white"
     >
-      <p class="glow_blue flex items-center cursor-pointer" @click="loadPreviousStation" >
+      <p
+        class="glow_blue flex items-center cursor-pointer"
+        @click="loadPreviousStation"
+      >
         <ArrowLeftIcon class="w-[28px] h-[28px] mr-[10px]" />
         Previous stations
       </p>
       <p class="glow_red cursor-pointer" @click="loadAllStations">
         See all stations
       </p>
-      <p class="glow_blue flex items-center cursor-pointer" @click="loadNextStation">
+      <p
+        class="glow_blue flex items-center cursor-pointer"
+        @click="loadNextStation"
+      >
         next station
         <ArrowRight1Icon class="w-[28px] h-[28px] ml-[10px]" />
       </p>
@@ -77,7 +80,6 @@ const loadPreviousStation = () => {
     width: 100%;
   }
 }
-
 
 .time {
   text-align: center;

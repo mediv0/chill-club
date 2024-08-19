@@ -1,7 +1,7 @@
 <script setup lang="ts">
 /// @ts-nocheck
 /// @ts-ignore
-import { useBucket } from "@mediv0/v-bucket";
+import { useBucket } from "@mediv0/v-bucket/dist/v-bucket.esm-browser.prod";
 
 const bucket = useBucket();
 

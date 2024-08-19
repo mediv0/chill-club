@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { PlayIcon, PauseIcon } from "@placetopay/iconsax-vue/bulk";
 import Loading from "../elements/Loading.vue";
-import { useBucket } from "@mediv0/v-bucket";
+import { useBucket } from "@mediv0/v-bucket/dist/v-bucket.esm-browser.prod";
 import type { CurrentActiveStation } from "~/types";
 
 const bucket = useBucket();
