@@ -1,13 +1,7 @@
 <template>
-  <div
-    class="navbar relative z-[999] flex items-center justify-between w-full px-[70px] pt-[20px]"
-  >
+  <div class="navbar relative z-[999] flex items-center justify-between w-full px-[70px] pt-[20px]">
     <div class="logo flex items-center">
-      <img
-        class="w-[41px] h-[41px]"
-        src="../assets/logo.png"
-        alt="chill club logo"
-      />
+      <img class="w-[41px] h-[41px]" src="../assets/logo.png" alt="chill club logo" />
       <div class="text-white ml-[15px]">
         <h1 class="uppercase text-[20px] font-bold">chill club</h1>
         <p class="text-[15px]">Best music streams hand picked for you</p>
@@ -15,10 +9,12 @@
     </div>
 
     <div class="text-white flex items-center space-x-10">
+      <a target="_blank" href="https://play.google.com/store/apps/details?id=com.xeniac.chillclub">
+        <img class="select-none" width="110" src="~/assets/googleplay.png" alt="download from google play" />
+      </a>
+
       <li class="navbar_item">
-        <a target="_blank" href="https://github.com/mediv0/chill-club"
-          >Github</a
-        >
+        <a target="_blank" href="https://github.com/mediv0/chill-club">Github</a>
       </li>
 
       <li class="navbar_item">
@@ -31,7 +27,6 @@
     </div>
   </div>
 </template>
-
 
 <style lang="scss" scoped>
 @import "@/assets/query.scss";
@@ -50,6 +45,4 @@
     text-align: center;
   }
 }
-
-
 </style>
