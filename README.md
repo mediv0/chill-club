@@ -8,14 +8,19 @@
   <a href="https://chill-club.vercel.app/" target="_blank">Live</a>
   
   
+  
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-orange.svg)](https://github.com/mediv0/chill-club/compare) 
 [![License](https://img.shields.io/github/license/mediv0/chill-club)](https://img.shields.io/github/license/mediv0/v-bucket) 
 </div>
 
 ---
 
-## **Best music streams hand picked for you**
-Chill club is a place for listening to live 24/7 musics Comes with more than +10 live streaming radios in a variety of categories.
+## Download
+<a href="https://play.google.com/store/apps/details?id=com.xeniac.chillclub" target="_blank"><img alt="Get it on Google Play" height="60" align="center" src="https://github.com/WilliamGates99/FUTSale/blob/main/resources/badges/google-play-badge.svg"/></a>
+&nbsp;
+
+## **Stream relaxing music from curated online radio stations effortlessly.**
+Dive into a world of relaxation with Chill Club, your go-to app for playing chill and soothing music. Whether you're looking to unwind after a long day, need some background music while working, or just want to immerse yourself in a calm atmosphere, Chill Club provides the perfect music to set the mood.
 
 ![Chill club](https://i.imgur.com/QgiRUb5.png)
 <br>
@@ -26,9 +31,10 @@ Chill club is a place for listening to live 24/7 musics Comes with more than +10
 - Minimal UI 🎈
 - Easy to use ✔️
 - Mobile-friendly 📱
-- More than +10 radio that are categorized 🎶
-- easily switch between tracks 🎵
-- Distraction free music player 🎺
+- Multiple Chill Radio Stations: Access a curated selection of online radio stations, each offering a unique blend of chill music. Switch between stations effortlessly to find the perfect vibe for any moment. 🎶
+- Seamless Streaming: Listen to high-quality, uninterrupted music wherever you are. 🎵
+- Simple and Intuitive Interface: Our user-friendly design makes it easy to navigate and find your favorite tunes 🎺
+- Lightweight and Fast: Chill Club is designed to be lightweight and fast, ensuring a smooth experience on any device
 
 <br>
 <br>
